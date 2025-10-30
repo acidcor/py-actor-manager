@@ -1,7 +1,7 @@
 import sqlite3
 from typing import List
 
-from app.models import Actors
+from app.models import Actor
 
 
 class ActorManager:
@@ -23,11 +23,11 @@ class ActorManager:
         self._connection.commit()
 
     # RETRIEVE - R
-    def all(self) -> List[Actors]:
+    def all(self) -> List[Actor]:
         literary_format_cursor = self._connection.execute(
             f"SELECT * FROM {self.table_name}"
         )
-        return [Actors(*row) for row in literary_format_cursor]
+        return [Actor(*row) for row in literary_format_cursor]
 
     # UPDATE - U
     def update(self, pk: int, new_first_name: str, new_last_name: str) -> None:
